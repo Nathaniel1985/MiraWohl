@@ -1,14 +1,12 @@
 
 :root{
-  --ink: #0f172a;           /* slate-900 */
-  --muted: #475569;         /* slate-600 */
+  --ink: #0f172a;
+  --muted: #475569;
   --bg: #ffffff;
-  --card: #f3f6fa;          /* light grey for paragraphs */
-  --border: #dfe6ef;        /* subtle border */
-  --banner: #1f2937;        /* dark grey banner */
+  --card: #f3f6fa;
+  --border: #dfe6ef;
+  --banner: #1f2937;
   --banner-text: #ffffff;
-  --brand: #0ea5e9;         /* sky-500 */
-  --brand-2: #a855f7;       /* violet-500 */
   --radius: 18px;
   --shadow: 0 10px 30px rgba(2,6,23,.08);
 }
@@ -22,7 +20,7 @@ body{
   background: var(--bg);
 }
 
-/* soft, colorful background */
+/* soft colorful background */
 .bg{
   position: fixed; inset: 0; z-index: -2;
   background:
@@ -60,22 +58,28 @@ body{
   background: var(--banner);
   color: var(--banner-text);
   border-radius: 16px;
-  padding: 18px 22px;
-  width: min(680px, 96%);
+  padding: 22px 26px;
+  width: min(700px, 96%);
   text-align:center;
   box-shadow: 0 10px 24px rgba(2,6,23,.18);
 }
 .hero-box h1{
   margin: 0 0 4px 0;
-  font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.4rem);
+  font-size: clamp(1.9rem, 1.5rem + 1.8vw, 2.5rem);
   line-height: 1.2;
   font-weight: 800;
-  letter-spacing:.2px;
 }
 .hero-box .subline{
   margin: 0;
   font-weight: 700;
   opacity: .96;
+  font-size: 1.15rem;
+}
+.hero-box .subtitle{
+  margin-top: 8px;
+  color: #e2e8f0;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .stack{
@@ -84,7 +88,7 @@ body{
   padding: 10px 0 56px;
 }
 
-/* paragraph cards (narrower than ribbon) */
+/* paragraph cards */
 .card{
   margin-inline: auto;
   width: min(640px, 92%);
@@ -93,6 +97,16 @@ body{
   border-radius: var(--radius);
   padding: 18px 20px;
   box-shadow: var(--shadow);
+}
+
+.card.emphasis{
+  background: linear-gradient(180deg, #f8fbff, #f3f6fa);
+  border-color: #d7e5ff;
+}
+
+.card.signature{
+  border-style: dashed;
+  border-color: #d6d9e0;
 }
 
 /* widget card */
@@ -112,17 +126,10 @@ body{
   display:block;
 }
 
-/* subtle highlight for the promise card */
-.card.emphasis{
-  background: linear-gradient(180deg, #f8fbff, #f3f6fa);
-  border-color: #d7e5ff;
+/* footer */
+.site-footer{
+  text-align:center;
+  color: var(--muted);
+  padding: 24px 0 56px;
 }
-
-/* signature card with lighter style */
-.card.signature{
-  border-style: dashed;
-  border-color: #d6d9e0;
-}
-
-.site-footer{ text-align:center; color: var(--muted); padding: 24px 0 56px }
 .site-footer p{ margin:0 }
