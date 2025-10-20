@@ -3,11 +3,12 @@
   --ink: #0f172a;           /* slate-900 */
   --muted: #475569;         /* slate-600 */
   --bg: #ffffff;
-  --card: #f5f7fb;          /* light grey for paragraphs */
-  --border: #e2e8f0;        /* slate-200 */
+  --card: #f3f6fa;          /* light grey for paragraphs */
+  --border: #dfe6ef;        /* subtle border */
+  --banner: #1f2937;        /* dark grey banner */
+  --banner-text: #ffffff;
   --brand: #0ea5e9;         /* sky-500 */
   --brand-2: #a855f7;       /* violet-500 */
-  --accent: #22d3ee;        /* cyan-400 */
   --radius: 18px;
   --shadow: 0 10px 30px rgba(2,6,23,.08);
 }
@@ -35,11 +36,11 @@ body{
 .ribbon{
   position: fixed;
   top: 0; bottom: 0; left: 50%;
-  width: clamp(520px, 56vw, 720px);
+  width: clamp(560px, 58vw, 760px);        /* slightly wider ribbon */
   transform: translateX(-50%);
   background:
     linear-gradient(180deg, rgba(14,165,233,.08), rgba(168,85,247,.08)),
-    linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.6));
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
   border-left: 1px solid rgba(148,163,184,.28);
   border-right: 1px solid rgba(148,163,184,.28);
   filter: drop-shadow(0 20px 40px rgba(2,6,23,.06));
@@ -48,28 +49,40 @@ body{
 
 /* layout */
 .wrap{ width:min(1100px, 92%); margin-inline:auto }
-.hero{ text-align:center; padding: 72px 0 24px }
-h1{
-  margin:0 0 10px 0;
-  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
-  line-height:1.2;
+
+/* dark banner header */
+.hero{
+  background: var(--banner);
+  color: var(--banner-text);
+  padding: 34px 0 26px;
+  box-shadow: 0 6px 18px rgba(2,6,23,.10);
 }
-.lede{
-  color: var(--muted);
+.hero-inner{ text-align:center }
+.hero h1{
+  margin:0 0 14px 0;
+  font-size: clamp(1.8rem, 1.5rem + 1.8vw, 2.6rem);
+  line-height:1.25;
+  font-weight: 800;
+  letter-spacing:.2px;
+}
+.hero .subline{
   font-weight: 700;
-  margin: 0 auto 18px;
-  max-width: 42ch;
+  opacity: .95;
 }
+.hero .cta{
+  margin-top: 6px;
+}
+
 .stack{
   display: grid;
   gap: 16px;
-  padding: 10px 0 56px;
+  padding: 18px 0 56px;
 }
 
-/* paragraph cards arranged along the ribbon */
+/* paragraph cards (slightly narrower than ribbon) */
 .card{
   margin-inline: auto;
-  width: min(720px, 96%);
+  width: min(640px, 92%);                   /* narrower than ribbon */
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -79,8 +92,8 @@ h1{
 
 /* subtle highlight for the promise card */
 .card.emphasis{
-  background: linear-gradient(180deg, #f7faff, #f5f7fb);
-  border-color: #dbe7ff;
+  background: linear-gradient(180deg, #f8fbff, #f3f6fa);
+  border-color: #d7e5ff;
 }
 
 /* signature card with lighter style */
