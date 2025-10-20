@@ -20,7 +20,6 @@ body{
   background: var(--bg);
 }
 
-/* soft colorful background */
 .bg{
   position: fixed; inset: 0; z-index: -2;
   background:
@@ -30,7 +29,6 @@ body{
     #fff;
 }
 
-/* central ribbon */
 .ribbon{
   position: fixed;
   top: 0; bottom: 0; left: 50%;
@@ -45,14 +43,9 @@ body{
   z-index: -1;
 }
 
-/* layout */
 .wrap{ width:min(1100px, 92%); margin-inline:auto }
 
-/* dark banner header (boxed) */
-.hero{
-  background: transparent;
-  padding: 32px 0 24px;
-}
+.hero{ background: transparent; padding: 32px 0 24px }
 .hero-inner{ display:flex; align-items:center; justify-content:center }
 .hero-box{
   background: var(--banner);
@@ -69,26 +62,11 @@ body{
   line-height: 1.2;
   font-weight: 800;
 }
-.hero-box .subline{
-  margin: 0;
-  font-weight: 700;
-  opacity: .96;
-  font-size: 1.15rem;
-}
-.hero-box .subtitle{
-  margin-top: 8px;
-  color: #e2e8f0;
-  font-weight: 500;
-  font-size: 1rem;
-}
+.hero-box .subline{ margin: 0; font-weight: 700; opacity: .96; font-size: 1.15rem }
+.hero-box .subtitle{ margin-top: 8px; color: #e2e8f0; font-weight: 500; font-size: 1rem }
 
-.stack{
-  display: grid;
-  gap: 16px;
-  padding: 10px 0 56px;
-}
+.stack{ display: grid; gap: 16px; padding: 10px 0 56px }
 
-/* paragraph cards */
 .card{
   margin-inline: auto;
   width: min(640px, 92%);
@@ -99,37 +77,14 @@ body{
   box-shadow: var(--shadow);
 }
 
-.card.emphasis{
-  background: linear-gradient(180deg, #f8fbff, #f3f6fa);
-  border-color: #d7e5ff;
-}
+.rich p{ margin: 0 0 1.05rem 0 }
 
-.card.signature{
-  border-style: dashed;
-  border-color: #d6d9e0;
-}
+.card.signature{ border-style: dashed; border-color: #d6d9e0 }
 
-/* widget card */
-.card.widget{
-  background: #ffffff;
-  border-color: #e8ecf3;
-}
-.widget-title{
-  margin: 0 0 10px 0;
-  font-size: 1.05rem;
-  color: var(--muted);
-  font-weight: 700;
-  text-align:center;
-}
-.widget-host{
-  width:100%;
-  display:block;
-}
+.card.widget{ background: #ffffff; border-color: #e8ecf3 }
+.widget-title{ margin: 0 0 10px 0; font-size: 1.05rem; color: var(--muted); font-weight: 700; text-align:center }
+.widget-host{ width:100%; display:block }
+.widget-note{ margin-top: 10px; color: #6b7280; font-size: .92rem; text-align:center }
 
-/* footer */
-.site-footer{
-  text-align:center;
-  color: var(--muted);
-  padding: 24px 0 56px;
-}
+.site-footer{ text-align:center; color: var(--muted); padding: 24px 0 56px }
 .site-footer p{ margin:0 }

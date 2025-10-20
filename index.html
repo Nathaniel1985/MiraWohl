@@ -28,53 +28,81 @@
   <div class="ribbon" aria-hidden="true"></div>
 
   <main class="wrap stack">
+    <!-- ONE combined paragraph card -->
     <section class="card">
-      <p>Schön, dass Sie da sind. In meiner Praxis <strong>Mirawohl</strong> stehen <strong>Sie als Mensch im Mittelpunkt</strong> – mit all Ihren Fragen, Bedürfnissen und vielleicht auch Sorgen. Als erfahrene Dentalhygienikerin begleite ich Sie <strong>persönlich, individuell und mit viel Herz</strong>, ganz ohne Hektik und ganz auf Augenhöhe.</p>
+      <div class="rich">
+        <p>Schön, dass Sie da sind. In meiner Praxis <strong>Mirawohl</strong> stehen <strong>Sie als Mensch im Mittelpunkt</strong> – mit all Ihren Fragen, Bedürfnissen und vielleicht auch Sorgen. Als erfahrene Dentalhygienikerin begleite ich Sie <strong>persönlich, individuell und mit viel Herz</strong>, ganz ohne Hektik und ganz auf Augenhöhe.</p>
+
+        <p>Ich weiss: Der Gedanke an einen Zahnarzt- oder Dentalhygiene-Termin kann bei vielen Unbehagen auslösen. Gerade deshalb liegt mir die <strong>einfühlsame Begleitung von Angstpatient:innen</strong> besonders am Herzen. In einer ruhigen, vertrauensvollen Atmosphäre nehme ich mir die Zeit, die Sie brauchen – damit Sie sich sicher und gut aufgehoben fühlen.</p>
+
+        <p><strong>Dentalhygiene soll für alle zugänglich sein.</strong> Darum biete ich für <strong>AHV-Beziehende und Studierende</strong> bewusst <strong>vergünstigte Konditionen</strong> an – weil Gesundheit kein Luxus sein sollte.</p>
+
+        <p>Ob es um die gründliche Zahnreinigung, die Vorsorge gegen Zahnfleischerkrankungen oder eine längerfristige Begleitung geht – ich bin gerne für Sie da. Mit <strong>moderner Ausstattung</strong>, fundierter Fachkenntnis und echter Zuwendung.</p>
+
+        <p><strong>Mirawohl</strong> ist mehr als ein Praxisname. Es ist ein Versprechen:<br> Dass Sie sich <strong>wohlfühlen dürfen. Gehört. Und verstanden.</strong></p>
+      </div>
     </section>
 
-    <section class="card">
-      <p>Ich weiss: Der Gedanke an einen Zahnarzt- oder Dentalhygiene-Termin kann bei vielen Unbehagen auslösen. Gerade deshalb liegt mir die <strong>einfühlsame Begleitung von Angstpatient:innen</strong> besonders am Herzen. In einer ruhigen, vertrauensvollen Atmosphäre nehme ich mir die Zeit, die Sie brauchen – damit Sie sich sicher und gut aufgehoben fühlen.</p>
-    </section>
-
-    <section class="card">
-      <p><strong>Dentalhygiene soll für alle zugänglich sein.</strong> Darum biete ich für <strong>AHV-Beziehende und Studierende</strong> bewusst <strong>vergünstigte Konditionen</strong> an – weil Gesundheit kein Luxus sein sollte.</p>
-    </section>
-
-    <section class="card">
-      <p>Ob es um die gründliche Zahnreinigung, die Vorsorge gegen Zahnfleischerkrankungen oder eine längerfristige Begleitung geht – ich bin gerne für Sie da. Mit <strong>moderner Ausstattung</strong>, fundierter Fachkenntnis und echter Zuwendung.</p>
-    </section>
-
-    <section class="card emphasis">
-      <p><strong>Mirawohl</strong> ist mehr als ein Praxisname. Es ist ein Versprechen:<br> Dass Sie sich <strong>wohlfühlen dürfen. Gehört. Und verstanden.</strong></p>
-    </section>
-
+    <!-- SECOND card for the closing/signature -->
     <section class="card signature">
       <p>Ich freue mich auf Sie.</p>
       <p>Herzlichst,<br>Mira Caspari</p>
       <p><strong>Dentalhygienikerin &amp; Mentalcoach</strong></p>
     </section>
 
-    <!-- Booking widget (MediCloud) moved to bottom -->
+    <!-- Booking widget (MediCloud) at the bottom -->
     <section class="card widget">
       <h2 class="widget-title">Online-Terminvereinbarung</h2>
       <div class="widget-host">
         <script type="text/javascript" src="https://medicloudmed.ch/PatientDent/DemoWidget/PatientDentWidget.js" id="booking-js"></script>
-        <iframe id="practicemed_iframe" title="Terminvereinbarung" style="width:100%;border:0;border-radius:12px;min-height:540px;"></iframe>
+        <iframe id="practicemed_iframe" title="Terminvereinbarung" style="width:100%;border:0;border-radius:12px;min-height:560px;"></iframe>
         <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            try {
-              patientDentWidget({
-                iframeId: "practicemed_iframe",
-                clinicId: "68b9338bc043d89a5053f912",
-                mode: "responsive",
-                locale: "de"
-              });
-            } catch (e) {
-              console.error("MediCloud widget failed to initialize:", e);
+          (function(){
+            var initialized = false;
+            function initWidget(){
+              if (initialized) return;
+              if (typeof window.patientDentWidget === "function") {
+                try{
+                  window.patientDentWidget({
+                    iframeId: "practicemed_iframe",
+                    clinicId: "68b9338bc043d89a5053f912",
+                    mode: "responsive",
+                    locale: "de"
+                  });
+                  initialized = true;
+                  console.log("[MediCloud] Widget initialized.");
+                }catch(e){
+                  console.error("[MediCloud] Initialization error:", e);
+                }
+              }
             }
-          });
+
+            // Retry logic in case the external script loads after DOMContentLoaded
+            function retryInit(attempts){
+              if (initialized) return;
+              initWidget();
+              if (!initialized && attempts > 0){
+                setTimeout(function(){ retryInit(attempts - 1); }, 500);
+              }
+            }
+
+            // When the external script tag finishes loading
+            var bookingScript = document.getElementById('booking-js');
+            if (bookingScript){
+              bookingScript.addEventListener('load', function(){
+                console.log("[MediCloud] Script loaded.");
+                initWidget();
+              });
+            }
+
+            // Also try on DOM ready and with a few retries
+            document.addEventListener('DOMContentLoaded', function(){
+              retryInit(6); // ~3s total retry window
+            });
+          })();
         </script>
       </div>
+      <p class="widget-note">Hinweis: Falls der Terminplaner leer bleibt, laden Sie die Seite ohne Werbe-/Tracking-Blocker neu.</p>
     </section>
   </main>
 
