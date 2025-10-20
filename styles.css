@@ -36,7 +36,7 @@ body{
 .ribbon{
   position: fixed;
   top: 0; bottom: 0; left: 50%;
-  width: clamp(560px, 58vw, 760px);        /* slightly wider ribbon */
+  width: clamp(560px, 58vw, 760px);
   transform: translateX(-50%);
   background:
     linear-gradient(180deg, rgba(14,165,233,.08), rgba(168,85,247,.08)),
@@ -50,44 +50,66 @@ body{
 /* layout */
 .wrap{ width:min(1100px, 92%); margin-inline:auto }
 
-/* dark banner header */
+/* dark banner header (boxed) */
 .hero{
+  background: transparent;
+  padding: 32px 0 24px;
+}
+.hero-inner{ display:flex; align-items:center; justify-content:center }
+.hero-box{
   background: var(--banner);
   color: var(--banner-text);
-  padding: 34px 0 26px;
-  box-shadow: 0 6px 18px rgba(2,6,23,.10);
+  border-radius: 16px;
+  padding: 18px 22px;
+  width: min(680px, 96%);
+  text-align:center;
+  box-shadow: 0 10px 24px rgba(2,6,23,.18);
 }
-.hero-inner{ text-align:center }
-.hero h1{
-  margin:0 0 14px 0;
-  font-size: clamp(1.8rem, 1.5rem + 1.8vw, 2.6rem);
-  line-height:1.25;
+.hero-box h1{
+  margin: 0 0 4px 0;
+  font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.4rem);
+  line-height: 1.2;
   font-weight: 800;
   letter-spacing:.2px;
 }
-.hero .subline{
+.hero-box .subline{
+  margin: 0;
   font-weight: 700;
-  opacity: .95;
-}
-.hero .cta{
-  margin-top: 6px;
+  opacity: .96;
 }
 
 .stack{
   display: grid;
   gap: 16px;
-  padding: 18px 0 56px;
+  padding: 10px 0 56px;
 }
 
-/* paragraph cards (slightly narrower than ribbon) */
+/* paragraph cards (narrower than ribbon) */
 .card{
   margin-inline: auto;
-  width: min(640px, 92%);                   /* narrower than ribbon */
+  width: min(640px, 92%);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
   box-shadow: var(--shadow);
+}
+
+/* widget card */
+.card.widget{
+  background: #ffffff;
+  border-color: #e8ecf3;
+}
+.widget-title{
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 700;
+  text-align:center;
+}
+.widget-host{
+  width:100%;
+  display:block;
 }
 
 /* subtle highlight for the promise card */
@@ -101,22 +123,6 @@ body{
   border-style: dashed;
   border-color: #d6d9e0;
 }
-
-/* call-to-action */
-.cta-row{ text-align:center; margin: 10px 0 6px }
-.cta{
-  display:inline-block;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color:#ffffff;
-  font-weight:700;
-  padding: 14px 22px;
-  border-radius: 12px;
-  text-decoration:none;
-  box-shadow: 0 10px 20px rgba(14,165,233,.18);
-  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-}
-.cta:hover{ transform: translateY(-1px); box-shadow: 0 14px 26px rgba(14,165,233,.24) }
-.cta:active{ transform: translateY(0) }
 
 .site-footer{ text-align:center; color: var(--muted); padding: 24px 0 56px }
 .site-footer p{ margin:0 }
