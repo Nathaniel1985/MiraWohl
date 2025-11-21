@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -23,10 +24,11 @@
     </div>
   </header>
 
+  <!-- Center ribbon -->
   <div class="ribbon" aria-hidden="true"></div>
 
   <main class="wrap stack">
-
+    <!-- ONE combined paragraph card -->
     <section class="card">
       <div class="rich">
         <p>Schön, dass Sie da sind. In meiner Praxis <strong>Mirawohl</strong> stehen <strong>Sie als Mensch im Mittelpunkt</strong> – mit all Ihren Fragen, Bedürfnissen und vielleicht auch Sorgen. Als erfahrene Dentalhygienikerin begleite ich Sie <strong>persönlich, individuell und mit viel Herz</strong>, ganz ohne Hektik und ganz auf Augenhöhe.</p>
@@ -63,33 +65,32 @@
       </div>
     </section>
 
-    <!-- Signature -->
+    <!-- SECOND card for the closing/signature -->
     <section class="card signature">
       <p>Ich freue mich auf Sie.</p>
       <p>Herzlichst,<br>Mira Caspari</p>
       <p><strong>Dentalhygienikerin &amp; Mentalcoach</strong></p>
     </section>
 
-    <!-- Widget -->
+    <!-- Booking widget (MediCloud) at the bottom -->
     <section class="card widget">
       <h2 class="widget-title">Online-Terminvereinbarung</h2>
       <div class="widget-host">
         <script type="text/javascript" src="https://medicloudmed.ch/PatientDent/DemoWidget/PatientDentWidget.js" id="booking-js"></script>
         <iframe id="practicemed_iframe" title="Terminvereinbarung" style="width:100%;border:0;border-radius:12px;"></iframe>
         <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            patientDentWidget({
-              iframeId: "practicemed_iframe",
-              clinicId: "68b9338bc043d89a5053f912",
-              mode: "responsive",
-              locale: "de"
-            });
-          });
-        </script>
+document.addEventListener('DOMContentLoaded', function() {
+patientDentWidget({
+iframeId: "practicemed_iframe",
+clinicId: "68b9338bc043d89a5053f912",
+mode: "responsive",
+locale: "de"
+});
+});
+        </script>  
       </div>
       <p class="widget-note">Hinweis: Falls der Terminplaner leer bleibt, laden Sie die Seite ohne Werbe-/Tracking-Blocker neu.</p>
     </section>
-
   </main>
 
   <footer class="site-footer">

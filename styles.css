@@ -1,1 +1,200 @@
-<THE CSS FROM PREVIOUS MESSAGE>
+
+:root{
+  --ink: #0f172a;
+  --muted: #475569;
+  --bg: #ffffff;
+  --card: #f3f6fa;
+  --border: #dfe6ef;
+  --banner: #1f2937;
+  --banner-text: #ffffff;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(2,6,23,.08);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html,body{overflow-x:hidden}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.bg{
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(900px 600px at 10% 15%, rgba(14,165,233,.09), transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, rgba(168,85,247,.10), transparent 60%),
+    radial-gradient(1000px 700px at 50% 100%, rgba(34,211,238,.10), transparent 60%),
+    #fff;
+}
+
+/* central ribbon — base */
+.ribbon{
+  position: fixed;
+  top: 0; bottom: 0; left: 50%;
+  width: clamp(560px, 58vw, 760px);
+  transform: translateX(-50%);
+  background:
+    linear-gradient(180deg, rgba(14,165,233,.08), rgba(168,85,247,.08)),
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+  border-left: 1px solid rgba(148,163,184,.28);
+  border-right: 1px solid rgba(148,163,184,.28);
+  filter: drop-shadow(0 20px 40px rgba(2,6,23,.06));
+  z-index: -1;
+}
+
+/* widen ribbon on large screens */
+@media (min-width: 1024px){
+  .ribbon{ width: clamp(720px, 70vw, 980px) }
+}
+@media (min-width: 1280px){
+  .ribbon{ width: clamp(880px, 72vw, 1120px) }
+}
+
+.wrap{ width:min(1200px, 94%); margin-inline:auto }
+
+.hero{ background: transparent; padding: 32px 0 24px }
+.hero-inner{ display:flex; align-items:center; justify-content:center }
+.hero-box{
+  background: var(--banner);
+  color: var(--banner-text);
+  border-radius: 16px;
+  padding: 22px 26px;
+  width: min(860px, 96%);
+  text-align:center;
+  box-shadow: 0 10px 24px rgba(2,6,23,.18);
+}
+.hero-box h1{
+  margin: 0 0 4px 0;
+  font-size: clamp(1.9rem, 1.5rem + 1.8vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+.hero-box .subline{ margin: 0; font-weight: 700; opacity: .96; font-size: 1.15rem }
+.hero-box .subtitle{ margin-top: 8px; color: #e2e8f0; font-weight: 500; font-size: 1rem }
+
+.stack{ display: grid; gap: 16px; padding: 10px 0 56px }
+
+/* cards — base (slightly narrower than ribbon) */
+.card{
+  margin-inline: auto;
+  width: min(640px, 96%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+
+/* widen cards with ribbon */
+@media (min-width: 1024px){
+  .card{ width: min(920px, 92%) }
+}
+@media (min-width: 1280px){
+  .card{ width: min(1060px, 90%) }
+}
+
+.rich p{ margin: 0 0 1.05rem 0 }
+
+.card.signature{ border-style: dashed; border-color: #d6d9e0 }
+
+.card.widget{ background: #ffffff; border-color: #e8ecf3 }
+.widget-title{ margin: 0 0 10px 0; font-size: 1.05rem; color: var(--muted); font-weight: 700; text-align:center }
+
+/* ensure the iframe never forces horizontal scrolling */
+.widget-host{ width:100%; display:block; overflow:hidden }
+#practicemed_iframe{ width:100% !important; max-width:100% !important; display:block }
+
+/* taller min-height for large screens so internal UI has room */
+#practicemed_iframe{ min-height: 560px }
+@media (min-width: 1024px){
+  #practicemed_iframe{ min-height: 720px }
+}
+@media (min-width: 1280px){
+  #practicemed_iframe{ min-height: 840px }
+}
+
+.site-footer{ text-align:center; color: var(--muted); padding: 24px 0 56px }
+.site-footer p{ margin:0 }
+
+
+/* -------- photos + tariff table layout -------- */
+
+.media-tariffs{
+  display:grid;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (min-width: 768px){
+  .media-tariffs{
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+}
+
+.media-photos{
+  display:flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.media-photos img{
+  flex: 0 1 46%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 22px rgba(15,23,42,.15);
+}
+
+/* Tariff table styling */
+.media-tariffs-text h2{
+  margin:0 0 10px 0;
+  font-size:1.2rem;
+}
+
+.tariff-table{
+  width:100%;
+  border-collapse: collapse;
+  font-size:0.98rem;
+}
+
+.tariff-table th,
+.tariff-table td{
+  padding: 6px 8px;
+  text-align:left;
+}
+
+.tariff-table th{
+  font-weight:600;
+  color: var(--ink);
+}
+
+.tariff-table tr:nth-child(odd){
+  background-color: rgba(255,255,255,.6);
+}
+
+.tariff-table tr:nth-child(even){
+  background-color: rgba(226,232,240,.4);
+}
+
+.tariff-table tr:first-child th,
+.tariff-table tr:first-child td{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+}
+
+.tariff-table tr:last-child th,
+.tariff-table tr:last-child td{
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+}
+
+.tariff-note{
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
