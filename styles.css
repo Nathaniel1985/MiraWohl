@@ -102,9 +102,22 @@ body{
 .card.widget{ background: #ffffff; border-color: #e8ecf3 }
 .widget-title{ margin: 0 0 10px 0; font-size: 1.05rem; color: var(--muted); font-weight: 700; text-align:center }
 
-/* ensure the iframe never forces horizontal scrolling */
-.widget-host{ width:100%; display:block; overflow:hidden }
-#practicemed_iframe{ width:100% !important; max-width:100% !important; display:block }
+/* Widget-Container: darf horizontal scrollen, aber nur innerhalb der Box */
+.widget-host{
+  width: 100%;
+  display: block;
+  overflow-x: auto;   /* seitliches Scrollen nur hier erlaubt */
+  overflow-y: hidden;
+}
+
+/* Widget selbst: hat eine Mindestbreite, damit Popups nicht „abgeschnitten“ werden */
+#practicemed_iframe{
+  display: block;
+  width: 100%;
+  min-width: 900px;   /* hier kannst du bei Bedarf mit 800 / 1000 px spielen */
+  max-width: none;
+  border-radius: 12px;
+}
 
 /* widget height (more space on all screens) */
 #practicemed_iframe{ min-height: 640px }
